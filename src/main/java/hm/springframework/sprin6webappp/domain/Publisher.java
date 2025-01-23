@@ -2,6 +2,7 @@ package hm.springframework.sprin6webappp.domain;
 
 import jakarta.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Publisher {
@@ -17,6 +18,8 @@ public class Publisher {
     private String state;
     private String zipCode;
 
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> books;
     public Long getId() {
         return id;
     }
@@ -65,6 +68,27 @@ public class Publisher {
         this.zipCode = zipCode;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", publisherName='" + publisherName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,15 +102,4 @@ public class Publisher {
         return Objects.hashCode(id);
     }
 
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", publisherName='" + publisherName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                '}';
-    }
 }
