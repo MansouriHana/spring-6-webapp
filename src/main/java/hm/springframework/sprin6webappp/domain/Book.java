@@ -3,12 +3,14 @@ package hm.springframework.sprin6webappp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 /**
  * Created by HM, Spring Framework HM
  */
+@Entity
 public class Book {
 
     @Id
@@ -20,7 +22,7 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     public Set<Author> getAuthors() {
         return authors;
