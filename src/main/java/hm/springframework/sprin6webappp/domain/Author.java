@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by HM, Spring Framework HM
  */
 @Entity
-public class Author {
+public class   Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
