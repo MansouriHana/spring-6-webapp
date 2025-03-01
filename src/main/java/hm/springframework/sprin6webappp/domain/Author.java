@@ -2,6 +2,7 @@ package hm.springframework.sprin6webappp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import java.util.Set;
  * Created by HM, Spring Framework HM
  */
 @Entity
-public class Author {
+public class   Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +19,7 @@ public class Author {
     private String lastname;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>( );;
 
     public Set<Book> getBooks() {
         return books;
